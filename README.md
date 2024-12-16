@@ -8,4 +8,4 @@
     - `java-app` - в нём будет запущено приложение.
 - Проверит доступность всех хостов.
 - Устанавит nginx в `ansible-container`.
-- Запускаем приложение в `java-app` используя ansible в контейнере `ansible-container`.
+- Запускаем приложение в `java-app`, используя ansible в контейнере `ansible-container`.
