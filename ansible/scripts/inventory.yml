@@ -1,0 +1,5 @@
+[nginx_servers]
+localhost ansible_connection=local
+
+[java_app_group]
+java-app ansible_connection=docker

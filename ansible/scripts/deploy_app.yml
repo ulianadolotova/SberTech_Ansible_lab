@@ -1,0 +1,15 @@
+- name: Deploy app
+  hosts: java-app
+  tasks:
+    - name: Build app
+      shell: cd /opt/app/ && gradle --stacktrace clean build
+    - name: Create start script
+      copy:
+        content: |
+          #!/bin/bash
+          snapshot=$(find /opt/app -name "*SNAPSHOT.jar")
+          java -jar $snapshot
+        dest: /opt/app/start.sh
+        mode: '0755'
+    - name: Run start script
+      shell: "/opt/app/start.sh"

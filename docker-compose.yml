@@ -1,0 +1,21 @@
+services:
+  ansible:
+    build: ./ansible
+    container_name: ansible-container
+    volumes:
+      - ./ansible/scripts:/ansible
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - ansible-network
+
+  app:
+    build: ./app
+    container_name: java-app
+    volumes:
+      - ./app/src:/opt/app
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - ansible-network
+
+networks:
+  ansible-network:

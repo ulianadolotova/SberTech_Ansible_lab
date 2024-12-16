@@ -1,0 +1,24 @@
+- name: Nginx installation and setup
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Installation
+      apt:
+        name: nginx
+        state: present
+    - name: Enable nginx service
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+    - name: Setup
+      copy:
+        src: ./nginx.conf
+        dest: /etc/nginx/nginx.conf
+        owner: root
+        group: root
+        mode: 0644
+    - name: Restart
+      service:
+        name: nginx
+        state: restarted
